@@ -14,7 +14,6 @@ class TasksViewController: UIViewController {
     var user: User!
     var reference: DatabaseReference!
     var tasks = [Task]()
-    private let databaseUrl = "https://todolistfirebase-f032d-default-rtdb.europe-west1.firebasedatabase.app"
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,7 +22,7 @@ class TasksViewController: UIViewController {
         
         guard let currentUser = Auth.auth().currentUser else { return }
         user = User(user: currentUser)
-        reference = Database.database(url: databaseUrl).reference().child(String(user.uid)).child("tasks")
+        reference = Database.database(url: APIUrlKey.databaseUrl).reference().child(String(user.uid)).child("tasks")
         
         
     }

@@ -13,7 +13,7 @@ class LoginViewController: UIViewController {
     
     let segueID = "tasksSegue"
     var reference: DatabaseReference!
-    private let databaseUrl = "https://todolistfirebase-f032d-default-rtdb.europe-west1.firebasedatabase.app"
+    
     
     @IBOutlet weak var warningLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        reference = Database.database(url: databaseUrl).reference(withPath: "users")
+        reference = Database.database(url: APIUrlKey.databaseUrl).reference(withPath: "users")
         NotificationCenter.default.addObserver(self, selector: #selector(kbDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(kbDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
         warningLabel.alpha = 0
