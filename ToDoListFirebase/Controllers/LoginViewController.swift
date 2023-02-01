@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        reference = Database.database(url: APIUrlKey.databaseUrl).reference(withPath: "users")
+        reference = Database.database(url: API.databaseUrl).reference(withPath: "users")
         NotificationCenter.default.addObserver(self, selector: #selector(kbDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(kbDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
         warningLabel.alpha = 0
@@ -100,9 +100,9 @@ class LoginViewController: UIViewController {
             return
         }
         
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] user, error in
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] (user, error) in
             guard error == nil, user != nil else {
-                print(error?.localizedDescription)
+                print(error!.localizedDescription)
                 return
             }
             

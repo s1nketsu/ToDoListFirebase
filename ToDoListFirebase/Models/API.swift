@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct APIUrlKey {
+struct API {
     static let databaseUrl = "https://todolistfirebase-f032d-default-rtdb.europe-west1.firebasedatabase.app"
 }
